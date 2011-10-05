@@ -1,0 +1,12 @@
+-----------------------------------------------------
+author : seaslee
+since   : 10/5,2011
+introduction : It is a simple and stupid tool to do image annotation.
+I am learning some thing about Image Progress and Machine learning ,so 
+I want to write some thing to learn them.
+-----------------------------------------------------
+1.Contents.
+  1)ExtFt.py : It is mainly to extract features from the image. 
+
+2.Usage.
+

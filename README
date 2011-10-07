@@ -6,7 +6,10 @@ I am learning some thing about Image Progress and Machine learning ,so
 I want to write some thing to learn them.
 -----------------------------------------------------
 1.Contents.
-  1)ExtFt.py : It is mainly to extract features from the image. 
+  1)ExtFt.py : It is mainly to extract features from the image.it can extract 
+    color feature and texture feature . In color feature ,we use the color histogram.
+    I am a fresh bird in image progress , hence i am use the gray-tone intensity-indepdent matrices.
+  2)
 
 2.Usage.
 

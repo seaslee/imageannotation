@@ -150,14 +150,14 @@ class  ExtractFeature:
         for (i,ele) in enumerate(mat):
             r[i]=np.sum(ele)
         mux=np.mean(r)
-        deltax=np.sqrt(np.std(r))
+        deltax=np.std(r)
         #uy
         c=np.zeros(cols)
         for i in range(rows):
             for j in range(cols):
                 c[j]+=mat[i,j]
         muy=np.mean(c)
-        deltay=np.sqrt(np.std(c))
+        deltay=np.std(c)
         isum=0
         for i in range(rows):
             for j in range(cols):

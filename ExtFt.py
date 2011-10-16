@@ -12,14 +12,16 @@ class  ExtractFeature:
     ''' this class is mainly supply methods to extract 
     features from the image , the return result is histogram .
     1)Color feature.
-    2)
+    2)Texture feature.
     '''
-    def __init__(self,path,imgname):
-        self.image=path+imgname
-        self.src=cv.LoadImageM(self.image)
+    def __init__(self,src,ftfile):
+        #self.image=path+imgname
+        #self.src=cv.LoadImageM(self.image)
+        self.src=src
         self.hist=None
         self.cft=[0]*72#color feature vector
         self.tft=[0]*10
+        self.ftfile=ftfile
 
     def qhsv(self,val):
         h=2*val[0]
@@ -163,7 +165,7 @@ class  ExtractFeature:
             for j in range(cols):
                 isum+=i*j*mat[i,j]
         delta=deltax*deltay
-        print 'isum %f ,mux %f ,muy %f ,deltax %f ,deltay %f'%(isum,mux,muy,deltax,deltay)
+        #print 'isum %f ,mux %f ,muy %f ,deltax %f ,deltay %f'%(isum,mux,muy,deltax,deltay)
         if delta>0:
             iresult=(isum-mux*muy)/delta
         else:
@@ -242,22 +244,26 @@ class  ExtractFeature:
         self.tft[7]=np.std(c)
         self.tft[8]=np.mean(l)
         self.tft[9]=np.std(l)
-
+    
+    def writeFeature(self,label):
+        self.extColorFeature('hsv')
+        self.extTextureFeature()
+        line=''
+        line+=str(label)
+        ft=self.cft+self.tft
+        for (i,ele) in enumerate(ft):
+            svmele=' '+str(i)+':'+str(ele)
+            line+=svmele
+        line+='\n'
+        self.ftfile.writelines(line)
 
 def main():
-    ext=ExtractFeature('/home/seaslee/','lenna.jpg')
-    #h=ext.extColorFeature('hsv')
-    #ext1=ExtractFeature('/home/seaslee/','test.jpg')
-    #h1=ext1.extColorFeature('hsv')
-    #cv.ShowImage('lennahsv hist',h)
-    #cv.ShowImage('reverse hsv hist',h1)
-    #cv.WaitKey()
+    src=cv.LoadImageM('/home/seaslee/1.jpg')
+    ftfile=open('ft','a')
+    ext=ExtractFeature(src,ftfile)
     start=clock()
-    ext.extTextureFeature()
+    ext.writeFeature(1)
     t=clock()-start
-    f=ext.tft
-    for ele in f:
-        print ele,
     print 'time is %f'%t
 
 

@@ -9,7 +9,11 @@ I want to write some thing to learn them.
   1)ExtFt.py : It is mainly to extract features from the image.it can extract 
     color feature and texture feature . In color feature ,we use the color histogram.
     I am a fresh bird in image progress , hence i am use the gray-tone intensity-indepdent matrices.
-  2)
+    For the time waste problem, i have to use matlab to write the texture feature algrothims.
+  2)glcm.m  : it's a matlab file . I use this to extract texture feature .
+  3)link.py : use this to put the cft(color feature file) and tft(texture feature file together).
+  4)svmff.py : format the feature file ,because i will use svmlib.
+
 
 2.Usage.
 
